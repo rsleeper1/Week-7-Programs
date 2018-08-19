@@ -101,6 +101,10 @@ def findSolution(startingPoint, endingPoint, solution, stack, states):
     states.append(currentNode.getState())
     stack.push(currentNode)
     while currentNode.getState() != endingPoint.getState():
+        if currentNode.getConnections() == None:
+            solution.pop()
+            states.pop()
+            stack.pop()
         item = stack.pop()
         for node in item.getConnections():
             stack.push(node)
